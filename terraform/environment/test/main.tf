@@ -18,6 +18,7 @@ module "network" {
   address_public_subnet     = ["10.31.0.192/26"]
   project              	    = var.project_name
   environment_name     	    = var.environment_name
+  depends_on = [module.resource_group]
 }
 
 module "nsg" {
@@ -29,4 +30,17 @@ module "nsg" {
   project             = var.project_name
   environment_name    = var.environment_name
   depends_on = [module.network]
+}
+
+module "databricks_ws" {
+  source                                = "../../modules/databricks_ws"
+  location                              = var.location
+  resource_group_name                   = "${var.project_name}-${var.environment_name}-rg"
+  managed_resource_group_name           = "${var.project_name}-${var.environment_name}-mrg"
+  databricks_vet_id                     = module.network.databricks_vet_id
+  private_security_group_association_id = module.nsg.private_security_group_association_id
+  public_security_group_association_id  = module.nsg.public_security_group_association_id
+  project                               = var.project_name
+  environment_name                      = var.environment_name
+  depends_on = [module.network, module.nsg]
 }
