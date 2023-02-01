@@ -1,6 +1,4 @@
-variable project_name {
-	default = "adb-cmk"
-}
+variable project_name {}
 
 variable location {
 	default = "northeurope"	

@@ -1,7 +1,7 @@
 resource "azurerm_network_security_group" "private" {
-  name                = "nsg-${var.project}-private-${var.environment_name}"
+  name                = "${var.resource_prefix}-private-nsg"
   location            = var.location
-  resource_group_name = var.resource_group
+  resource_group_name = var.resource_group_name
 
   security_rule {
     name                        = "Microsoft.Databricks-workspaces_UseOnly_databricks-worker-to-worker-inbound"
@@ -115,9 +115,9 @@ security_rule {
 }
 
 resource "azurerm_network_security_group" "public" {
-  name                = "nsg-${var.project}-public-${var.environment_name}"
+  name                = "${var.resource_prefix}-private-nsg"
   location            = var.location
-  resource_group_name = var.resource_group
+  resource_group_name = var.resource_group_name
 
   security_rule {
     name                        = "Microsoft.Databricks-workspaces_UseOnly_databricks-worker-to-worker-inbound"

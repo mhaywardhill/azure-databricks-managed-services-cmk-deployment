@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "vnet" {
-  name     = "${var.resource_group_prefix}-vnet-rg"
+  name     = "${var.resource_prefix}-vnet-rg"
   location = var.location
 
   tags = {
@@ -9,7 +9,7 @@ resource "azurerm_resource_group" "vnet" {
 
 
 resource "azurerm_resource_group" "adb" {
-  name     = "${var.resource_group_prefix}-rg"
+  name     = "${var.resource_prefix}-rg"
   location = var.location
 
   tags = {
