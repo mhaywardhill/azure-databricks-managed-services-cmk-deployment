@@ -8,7 +8,7 @@
     ├── README.md                               <- README file
     ├── LICENSE                                 <- the LICENSE
     └── terraform                               <- Terraform config files 
-        ├── environments        
+        ├── environment        
         │   └── test                            <- test environment folder, holds the Terraform state
         └── modules            
             ├── resource_group                  <- Terraform config file to add resource group for the Databricks workspace and VNET
@@ -32,7 +32,7 @@ git clone https://github.com/mhaywardhill/azure-databricks-managed-services-cmk-
 and go into the repository and navigate to the terraform environment folder:
 
 ```
-cd  azure-databricks-managed-services-cmk-deployment/terraform/environments/test/
+cd  azure-databricks-managed-services-cmk-deployment/terraform/environment/test/
 ```
 
 #### Set environment variables
